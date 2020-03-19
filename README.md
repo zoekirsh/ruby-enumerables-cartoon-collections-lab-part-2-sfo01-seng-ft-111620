@@ -26,7 +26,7 @@ There are four methods to complete in this lab:
 
 The first method is one we've seen before while learning `while` loops, so let's
 walk through it for a quick review. This method takes in an array of numbers and
-returns a _new_ array of the square of each of those numbers. Using `while`
+returns a _new_ array of the **square** of each of those numbers. Using `while`
 loops, we might solve it this way:
 
 ```rb
@@ -47,7 +47,7 @@ square_array([1,2,3,4])
 ```
 
 We iterate over the array, and for each element, we push the result of that
-element multipled by itself into a new array. The new array is then returned at
+element multiplied by itself into a new array. The new array is then returned at
 the end.
 
 Now, we _could_ use `each` in our solution, replacing the `while` loop, but we
@@ -68,7 +68,7 @@ square_array([1,2,3,4])
 
 Needing to work on one collection and return another collection like this sounds
 very much like the behavior of [`map`][map]. `map` enumerates over an array,
-returning a new array. The new array is made up of the return values from the
+returning a new array. The new array is composed of the return values from the
 block that we provide. In this way, `map` takes care of the work of pushing values
 into a new array.
 
@@ -81,13 +81,13 @@ end
 ```
 
 The return value of the `map` method _is_ the new array. All three of the above
-examples will pass the test for the first method. Howecer, using `map` is both
+examples will pass the test for the first method. However, using `map` is both
 more succinct, _and_ more expressive.
 
 Some of the methods in this lab use Enumerables we haven't talked much about.
 Use what you've learned about Enumerables in general along with the
 [official documentation][enumerables] to solve this lab. You can absolutely
-solve all of these methods using `while` loops or `each`, but there are specific
+implement all of these methods using `while` loops or `each`, but there are specific
 Enumerables that are great for each of them.
 
 If you are having trouble conceptualizing solutions using more specific
@@ -184,15 +184,15 @@ method should return is the _first_ valid string found.
 
 ## Conclusion
 
-Enumerables allow for a succinct way to perform work related to a collection of
+Enumerables allow for a concise way to perform work related to a collection of
 values. With them, we can draw useful insights out of data, distilling a
 collection down into a single value. Sometimes, we might want to transform data
 - reorganize it into a more useful format. We can do all of these things with
 Enumerables.
 
 We encourage you to expand your vocabulary and check out the Enumerables that we
-are not able to practice. Methods like `select` and `uniq` can be extremely
-useful as we dive into more complex data structures.
+are not able to practice. Methods like `select` and `uniq` can be handy as we
+dive into more complex data structures.
 
 ## Resources
 
