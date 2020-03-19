@@ -1,68 +1,70 @@
 require "spec_helper"
 
-describe "Cartoon Collections" do
-  describe "#roll_call_dwarves" do
-    it "prints out the 7 dwarfs in a numbered list" do
-      dwarves = ["Dopey", "Grumpy", "Bashful"]
+describe "./cartoon_collections.rb" do
+  small_calls = ["earth", "wind", "fire", "water", "heart"]
+  other_calls = ["plants", "humans", "mushrooms", "brains"]
+  short_calls = ["wood", "moss"]
 
-      output = capture_stdout do
-        roll_call_dwarves(dwarves)
+  describe "square_array" do
+    it "takes in an array of numbers and returns an array of those numbers squared" do
+      expect(square_array([1,2,3,4,5])).to eq([1,4,9,16,25])
+      expect(square_array([10, 12])).to eq([100, 144])
+    end
+  end
+
+  describe "summon_captain_planet" do
+    it "takes in an array of strings and returns a new array where each string is capitalized and has an exclamation point" do
+      
+
+      expect(summon_captain_planet(small_calls)).to eq(["Earth!", "Wind!", "Fire!", "Water!", "Heart!"])
+      expect(summon_captain_planet(other_calls)).to eq(["Plants!", "Humans!", "Mushrooms!", "Brains!"])
+    end
+  end
+
+  describe "long_planeteer_calls" do
+    describe "takes in an array of strings and" do
+      it "returns true if any string is greater than 4 characters long" do
+        expect(long_planeteer_calls(small_calls)).to eq(true)
+        expect(long_planeteer_calls(short_calls)).to_not eq(true)
       end
 
-      # This regex allows for arbitrary characters between
-      # the numbering and the name
-      expect(output).to match(/1.*Dopey/)
-      expect(output).to match(/2.*Grumpy/)
-      expect(output).to match(/3.*Bashful/)
+      it "returns false if all strings are less than 4 characters long" do
+        expect(long_planeteer_calls(short_calls)).to eq(false)
+        expect(long_planeteer_calls(small_calls)).to_not eq(false)
+      end
     end
   end
 
-  describe "#summon_captain_planet" do
-    it "returns an array with the same number of elements that it was given" do
-      veggies = ["carrot", "cucumber", "pepper"]
-      result = summon_captain_planet(veggies)
-      expect(result.class).to eq(Array)
-      expect(result.length).to eq(3)
-    end
+  describe "find_valid_calls" do
+    describe "takes in an array of strings" do
+      it "checks for and valid planeteer calls and returns the first found if present" do
+        expect(find_valid_calls(["Earth!", "Wind!", "Fire!", "Water!", "Heart!"])).to eq("Earth!")
+        expect(find_valid_calls(["Wood!", "Wind!", "Brass!", "Enamel!", "Heart!"])).to eq("Wind!")
+      end
 
-    it "capitalizes each element and adds an exclamation mark (test 1)" do
-      fruits = ["apple", "banana", "orange"]
-      result = summon_captain_planet(fruits)
-      ['Apple!', 'Banana!', 'Orange!'].each { |w| expect(result).to include w }
-    end
-
-    it "capitalizes each element and adds an exclamation mark (test 2)" do
-      veggies = ["carrot", "cucumber", "pepper"]
-      result = summon_captain_planet(veggies)
-      ["Carrot!", "Cucumber!", "Pepper!"].each { |w| expect(result).to include w }
-    end
-  end
-
-  describe "#long_planeteer_calls" do
-    it "returns true if any calls are longer than 4 characters" do
-      calls_long = ["axe", "earth", "wind", "fire"]
-      expect(long_planeteer_calls(calls_long)).to eq(true)
-    end
-
-    it "returns false if all calls are 4 characters or less" do
-      calls_short = ["wind", "fire", "tree", "axe", "code"]
-      expect(long_planeteer_calls(calls_short)).to eq(false)
-    end
-
-  end
-
-  describe "#find_the_cheese" do
-    it "returns the first element of the array that is cheese" do
-      contains_cheddar = ["banana", "cheddar", "sock"]
-      expect(find_the_cheese(contains_cheddar)).to eq 'cheddar'
-
-      contains_gouda = ["potato", "gouda", "camembert"]
-      expect(find_the_cheese(contains_gouda)).to eq 'gouda'
-    end
-
-    it "returns nil if the array does not contain a type of cheese" do
-      no_cheese = ["ham", "cellphone", "computer"]
-      expect(find_the_cheese(no_cheese)).to eq nil
+      it "if no valid planeteer calls are found, returns nil" do
+        expect(find_valid_calls(small_calls)).to be(nil)
+        expect(find_valid_calls(short_calls)).to be(nil)
+      end
     end
   end
 end
+
+#   
+# end
+
+# describe "takes in an array of strings and" do
+#   small_calls = ["earth", "wind", "fire", "water", "heart"]
+#   short_calls = ["wood", "moss"]
+
+#   it "returns true if any string is greater than 4 characters long" do
+#     expect(long_planeteer_calls(short_calls)).to eq(true)
+#     expect(long_planeteer_calls(small_calls)).to_not eq(true)
+#   end
+
+#   it "returns false if all strings are less than 4 characters long" do
+#     expect(long_planeteer_calls(short_calls)).to_not eq(false)
+#     expect(long_planeteer_calls(small_calls)).to eq(false)
+#   end
+# end
+
